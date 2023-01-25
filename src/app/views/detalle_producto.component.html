@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 jumbotron">
+			<h2>{{titulo}}</h2>
+			<hr>
+			<br>
+			<div *ngIf="producto">
+					<div class="col-md-4" *ngIf="producto.imagen">
+							<img src="http://localhost/Omar/curso-angular4-backend/uploads/{{producto.imagen}}" class="img_prod" />
+					</div>
+					<div class="col-md-8">
+						<h2>{{producto.nombre}}</h2>
+						<p><strong>{{producto.precio}}</strong></p>
+						<p>{{producto.descripcion}}</p>
+					</div>
+					<div *ngIf="!producto">
+						<h2>Cargando producto...</h2>
+					</div>
+			</div>
+		</div>
+			
+	</div>
+</div>

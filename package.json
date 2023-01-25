@@ -7,7 +7,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --type-check",
+    "lint:ts": "eslint src/app/. --ext .ts",
+    "watch:ts": "onchange 'src/app/**/*.ts' -- npm-run-all lint:ts",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -23,6 +25,7 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
+    "typescript-eslint-parser": "^14.0.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
@@ -33,6 +36,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.2.0",
+    "eslint": "^4.19.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",

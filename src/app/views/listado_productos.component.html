@@ -1,0 +1,75 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 jumbotron">		
+			<h3>{{titulo}}</h3>
+				<div class="col-md-12">
+		      				<table class="table table-hover">
+								  <tr>
+								  	<td>ID</td>
+								  	<td>Nombre</td>
+								  	<td>Descripción</td>
+								  	<td>Precio</td>
+								  	<td>Imagen</td>
+								  	<td>Acciones</td>
+								  </tr>
+								  <tbody *ngIf="productos">
+								  	<tr *ngFor="let producto of productos">
+								  	<td>{{producto.id}}</td>
+								  	<td> {{producto.nombre}}</td>
+								  	<td> {{producto.descripcion}}</td>
+								  	<td> {{producto.precio}}</td>
+								  	<td> {{producto.imagen}}</td>
+								  	<td> 
+								  		<a  [routerLink]="['/producto',producto.id]"><button class="btn btn-sm btn-default">Ver</button></a>
+				    					<a  [routerLink]="['/editar-producto',producto.id]"><button class="btn btn-sm btn-warning">Editar</button></a>
+				    					<a (click)="BorrarConfirm(producto.id)"><button class="btn btn-sm btn-danger" data-toggle="modal" data-target=".modalConfirmacion">Eliminar</button></a>
+								  	</td>
+								  </tr>
+								  </tbody>								  
+							</table>
+							<h3 *ngIf="!productos">Cargando listado...</h3>      		
+		    	</div>
+		    	<h2>{{titulo2}}</h2>
+		    	<div class="col-md-3" *ngFor="let producto of productos">
+		    		<div class="thumbnail">
+		    			<div *ngIf="producto.imagen" class="img-container">
+		    				<img src="http://localhost/Omar/curso-angular4-backend/uploads/{{producto.imagen}}" class="img_prod" />
+		    			</div>
+		    			<div *ngIf="!producto.imagen">
+		    				<div class="img_relleno"></div>
+		    			</div>
+		    			<div  class="caption">
+		    				<h4>{{producto.nombre}}</h4>
+		    				<p>{{producto.precio}}</p>
+		    				<p>
+		    					<a [routerLink]="['/producto',producto.id]" ><button class="btn btn-sm btn-default">Ver</button></a>
+		    					<a [routerLink]="['/editar-producto',producto.id]"><button class="btn btn-sm btn-warning">Editar</button></a>
+		    					<a (click)="BorrarConfirm(producto.id)"><button class="btn btn-sm btn-danger" data-toggle="modal" data-target=".modalConfirmacion">Eliminar</button></a>
+		    				</p>
+		    				<div *ngIf="seguro == producto.id">
+									<div class="modal fade modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+									  <<div class="modal-dialog" role="document">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">Eliminar {{producto.nombre}}</h4>
+									      </div>
+									      <div class="modal-body">
+									        <p>Estás seguro que deseas eliminar el producto?</p>
+									      </div>
+									      <div class="modal-footer">
+									        <button (click)="cancelarConfirm()" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+									        <button (click)="EliminarProducto(producto.id)" type="button" data-dismiss="modal" class="btn btn-success">Confirmar</button>
+									      </div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div>
+
+		    				</div>
+		    				
+		    			</div>
+		    		</div>
+		    	</div>
+		</div>
+	</div>
+</div>

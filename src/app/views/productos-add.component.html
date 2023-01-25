@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 jumbotron">
+			<h3>{{titulos}}</h3>
+			<hr>
+			<div class="col-md-8">
+
+			<form #formProductos="ngForm" class="form-horizontal" (ngSubmit)="Enviar()">
+
+  				<div class="form-group">
+    				<label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+    					<div class="col-md-6">
+     						 <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="producto.nombre" class="form-control" placeholder="Nombre" pattern="a-zA-Z#+" required>
+    					</div>
+  				</div>
+  				<div class="form-group">
+   				 	<label for="inputPassword3" class="col-sm-2 control-label">Descripción</label>
+    					<div class="col-md-6">
+      						<textarea type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="producto.descripcion" class="form-control" placeholder="Descripción" required pattern="0-9+"></textarea>
+    					</div>
+  				</div>
+  				<div class="form-group">
+   				 	<label for="inputPassword3" class="col-sm-2 control-label">Precio</label>
+    					<div class="col-md-6">
+      						<input type="text" name="precio" #precio="ngModel" [(ngModel)]="producto.precio" class="form-control" placeholder="Precio" required pattern="0-9+">
+    					</div>
+  				</div>
+  				<div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-2 control-label">Imagen</label>
+                    <div class="col-md-6">
+                         <div *ngIf="is_edit">
+                          <img src="http://localhost/Omar/curso-angular4-backend/uploads/{{producto.imagen}}" class="img_edit" />
+                        </div>
+                        <input type="file" (change)="fileChangeEvent($event)" class="form-control" required>
+                    </div>
+                </div>    
+          </div>
+  				<div class="form-group">
+    				<div class="col-sm-offset-2 col-md-10">
+      						<div *ngIf="!is_edit">
+                      <button type="submit" class="btn btn-default">Guardar</button>      
+                  </div>
+                  <div *ngIf="is_edit">
+                      <button type="submit" class="btn btn-default">Editar</button>      
+                  </div>
+    					</div>
+ 					 </div>
+</form>
+		</div>
+
+
+
+		</div>
+	</div>
+</div>

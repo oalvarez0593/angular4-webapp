@@ -1,0 +1,24 @@
+.activado{
+	/*background-color: #eee !important;*/
+	border-bottom: 2px solid black !important;
+}
+.hide{
+	display: none;
+}
+.img_prod{
+	height: 200px;
+	margin: 0px auto;
+	display: block;
+}
+.img_relleno{
+	height: 200px;
+	background: #ccc;
+	width: 100%;
+}
+.img-container{
+	width: 100%;
+	overflow: hidden;
+}
+.img_edit{
+	width: 60px;
+}
